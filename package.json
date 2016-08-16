@@ -1,0 +1,44 @@
+{
+  "name": "google_place_api",
+  "version": "1.0.0",
+  "description": "Google Place API",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrent  \"npm run lite\" ",
+    "lite": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/otmusic/google_place_api.git"
+  },
+  "keywords": [
+    "backbone",
+    "google-place-api",
+    "moc"
+  ],
+  "author": "alex kharchenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/otmusic/google_place_api/issues"
+  },
+  "homepage": "https://github.com/otmusic/google_place_api#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-minify": "0.0.12",
+    "gulp-sass": "2.3.2",
+    "gulp-concat-css":"2.3.0",
+    "buble": "^0.12.3",
+    "jquery": "^3.0.0",
+    "underscore": "^1.8.3",
+    "backbone": "^1.3.3",
+    "requirejs": "^2.2.0",
+    "concurrently": "^2.0.0",
+    "typings": "^0.7.9"
+  },
+  "devDependencies": {
+    "gulp-buble": "^0.7.0",
+    "lite-server": "^2.1.0"
+  }
+}
