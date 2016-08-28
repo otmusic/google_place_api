@@ -1,21 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
     <meta charset="UTF-8" />
     <title>Google Place API</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css" />
-
   </head>
 
   <body>
 
-    <div class="container-fluid">
-      <div class="row">
-
-      </div>
+    <div class="container">
+      <div id="map" class="google-map"></div>
+      <div id="places-lists" class="places-container"></div>
     </div>
+
+    <script id="placeElement" type="text/template">
+
+      <div class="photo">
+        <% if (typeof(photos) !== "undefined") { %>
+          <% _.each(photos, function(photo) { %>
+            <img src="<%= photo.getUrl({'maxWidth': 100, 'maxHeight': 100}) %>" width="100" height="100">
+          <% }); %>
+        <% } else { %>
+          <img src="<%= icon %>" width="100" height="100" />
+        <% } %>
+      </div>
+
+      <div class="info">
+        <h2><%= name %></h2>
+        <span class="location"><%= vicinity %></span>
+        <a href="#" class="show-more-info">More info</a>
+      </div>
+
+      <div class="more-info no-display">
+
+        <% if (rating) { %>
+          <span class="rating"><%= rating %></span>
+        <% } %>
+        <ul>
+          <% _.each(types, function(type) { %>
+            <li><%= type%></li>
+          <% }); %>
+        </ul>
+
+        <% if (typeof(opening) !== "undefined") { %>
+          <% if (opening.open_now) { %>
+            <span class="opening">Open</span>
+          <% } else { %>
+            <span class="opening">Closed</span>
+          <% } %>
+        <% } else { %>
+          <span class="opening">No open info</span>
+        <% } %>
+      </div>
+
+    </script>
 
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOL3GHfdjdKVJ4V3rNOPuH0x-yV3x8spY&libraries=geometry,places"></script>
     <script src="build/js/build.js"></script>

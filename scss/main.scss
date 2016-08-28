@@ -49,8 +49,67 @@ main {
   display: block;
 }
 
+html, body {
+  height: 100%;
 
+  .container {
+    overflow: hidden;
+    .google-map {
+      overflow: hidden;
+      position: fixed !important;
+      bottom: 0; right: 0;
+      width:50vw;height: 100vh;
+      z-index: 1;
+    }
 
-body {
-  //background: #0000AA;
+    .places-container {
+      overflow: auto;
+      float: left;
+      padding:1rem;
+      width:50vw;height: 100vh;
+      ul {
+        li {
+          overflow: hidden;
+          margin:0 0 1rem 0;
+          .photo {
+            overflow: hidden;
+            float: left;
+            margin:0 0.6rem 0 0;
+          }
+          .info {
+            overflow: hidden;
+            .location {
+              color:#959b9e;
+            }
+            a {
+              display: block;
+              margin:0.2rem 0 0 0;
+              cursor:pointer;
+            }
+          }
+
+          .more-info {
+            overflow: hidden;
+            width:100%;
+            .rating {
+              display: inline-block;
+              padding: 0.2rem 0.5rem 0 0.5rem;
+              background: #73CF42;
+              line-height: 2rem;
+              color:#ffffff;
+            }
+            ul {
+              overflow: hidden;
+              li {
+                display: inline-block;
+                margin: 0 0.2rem 0 0; padding:0.2rem;
+                background: #486072;
+                color:#fff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

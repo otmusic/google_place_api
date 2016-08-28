@@ -5,6 +5,9 @@ $(function () {
 
     'use strict';
 
-    new app.mapPlace();
+    new app.CurrentUserLocation();
+
+
+
 
 });

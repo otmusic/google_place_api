@@ -16,7 +16,10 @@ gulp.task('build-js-dev', function () {
         'node_modules/underscore/underscore.js',
         'node_modules/backbone/backbone.js',
         'node_modules/requirejs/require.js',
-        'js/app/**/*.js',
+        'js/app/models/*.js',
+        'js/app/views/*.js',
+        'js/app/collections/*.js',
+        'js/app/routes/*.js',
         'js/main.js'
     ])
         .pipe(concat('build.js'))
@@ -29,7 +32,10 @@ gulp.task('build-js-prod', function () {
         'node_modules/underscore/underscore.js',
         'node_modules/backbone/backbone.js',
         'node_modules/requirejs/require.js',
-        'js/app/**/*.js',
+        'js/app/models/*.js',
+        'js/app/views/*.js',
+        'js/app/collections/*.js',
+        'js/app/routes/*.js',
         'js/main.js'
     ])
         .pipe(concat('build.js'))
