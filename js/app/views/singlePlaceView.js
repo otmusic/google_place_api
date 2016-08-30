@@ -15,7 +15,6 @@ $(function(){
         template: _.template($("#placeElement").html()),
         events: {
           "click .show-more-info": 'showMorePlaceInfo'
-
         },
 
         render: function () {
@@ -52,6 +51,10 @@ $(function(){
                 place.mapMarker.setAnimation(google.maps.Animation.BOUNCE);
             }
 
+        },
+
+        findPlace: function () {
+            console.log('click button');
         }
 
     });

@@ -9,11 +9,8 @@ $(function () {
 
     app.GoogleMap = Backbone.Model.extend({
 
-        initialize: function () {
-            var self = this
-        },
 
-        buildGoogleMap: function (userCoordinateObject) {
+        buildGoogleMap: function (userCoordinateObject, searchPlace) {
             var map, self;
             self = this;
 
@@ -23,23 +20,25 @@ $(function () {
                 zoom: 15
             });
 
-            self.getPlacesFromGoogleMapAPI(userCoordinateObject, map)
+            self.getPlacesFromGoogleMapAPI(userCoordinateObject, map, searchPlace)
 
         },
 
-        getPlacesFromGoogleMapAPI: function(userCoordinateObject, map) {
+        getPlacesFromGoogleMapAPI: function(userCoordinateObject, map, searchPlace) {
 
             var service, self;
             self = this;
+
+            var querySearchValue = (searchPlace === undefined) ? 'cafe' : searchPlace;
 
             //noinspection JSUnresolvedVariable,JSUnresolvedFunction
             service = new google.maps.places.PlacesService(map);
 
             //noinspection JSUnresolvedVariable,JSUnresolvedFunction
-            service.nearbySearch({
+            service.textSearch({
                 location: { lat: userCoordinateObject.latitude, lng: userCoordinateObject.longitude },
                 radius: 500,
-                types: ['store']
+                query: querySearchValue
             }, function (results, status) {
 
                 var places = [],

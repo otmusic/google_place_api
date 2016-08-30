@@ -11,8 +11,8 @@ $(function () {
     app.CurrentUserLocation = Backbone.Model.extend({
 
         defaults: {
-            latitude: 0,
-            longitude: 0
+            latitude: 40.730610,
+            longitude: -73.935242
         },
 
         initialize: function () {
@@ -54,6 +54,10 @@ $(function () {
         setLatLng: function(position) {
 
             this.set({ latitude: position.coords.latitude,  longitude: position.coords.longitude});
+
+
+            store.set('userCurrentLocation', { latitude: position.coords.latitude,  longitude: position.coords.longitude} )
+
 
         }
 

@@ -9,9 +9,18 @@
   <body>
 
     <div class="container">
+      <div class="find-place-container" id="findPlaceWithGoogleApi">
+        <form action="#" data-remote="true" id="findPlaceForm">
+          <fieldset>
+            <input type="text" placeholder="Find place..." id="findPlaceInput" />
+            <input type="submit" value="Search" form="findPlaceForm" id="findPlaceButton">
+          </fieldset>
+        </form>
+      </div>
       <div id="map" class="google-map"></div>
       <div id="places-lists" class="places-container"></div>
     </div>
+
 
     <script id="placeElement" type="text/template">
 
