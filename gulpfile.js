@@ -16,6 +16,7 @@ gulp.task('build-js-dev', function () {
         'node_modules/underscore/underscore.js',
         'node_modules/backbone/backbone.js',
         'node_modules/store/store.js',
+        'node_modules/fancybox/dist/js/jquery.fancybox.js',
         'js/app/models/*.js',
         'js/app/views/*.js',
         'js/app/collections/*.js',
@@ -32,6 +33,7 @@ gulp.task('build-js-prod', function () {
         'node_modules/underscore/underscore.js',
         'node_modules/backbone/backbone.js',
         'node_modules/store/store.js',
+        'node_modules/fancybox/dist/js/jquery.fancybox.js',
         'js/app/models/*.js',
         'js/app/views/*.js',
         'js/app/collections/*.js',
@@ -50,7 +52,8 @@ gulp.task('build-js-prod', function () {
 
 gulp.task('build-css', function () {
     return gulp.src([
-        'scss/main.scss'
+        'scss/main.scss',
+        'node_modules/fancybox/dist/css/jquery.fancybox.css'
     ])
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(concatCss("main.css"))

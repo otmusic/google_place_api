@@ -35,34 +35,84 @@
       </div>
 
       <div class="info">
-        <h2><%= name %></h2>
-        <span class="location"><%= vicinity %></span>
-        <a href="#" class="show-more-info">More info</a>
-      </div>
 
-      <div class="more-info no-display">
+        <h2>
+          <a href="#placeDetails" class="show-more-info"><%= name %></a>
+        </h2>
 
-        <% if (rating) { %>
-          <span class="rating"><%= rating %></span>
-        <% } %>
+        <span class="location"><%= address %></span>
+
         <ul>
-          <% _.each(types, function(type) { %>
-            <li><%= type%></li>
-          <% }); %>
+
+          <li>
+            <span class="rating label"><%= rating %></span>
+          </li>
+
+          <li>
+            <ul>
+              <% _.each(types, function(type) { %>
+                <li><%= type %></li>
+              <% }); %>
+            </ul>
+          </li>
+
+          <% if (typeof(opening) !== "undefined") { %>
+            <li>
+              <% if (opening.open_now) { %>
+                <span class="open label">Open</span>
+              <% } else { %>
+                <span class="close label">Closed</span>
+              <% } %>
+            </li>
+          <% } %>
         </ul>
 
-        <% if (typeof(opening) !== "undefined") { %>
-          <% if (opening.open_now) { %>
-            <span class="opening">Open</span>
-          <% } else { %>
-            <span class="opening">Closed</span>
-          <% } %>
-        <% } else { %>
-          <span class="opening">No open info</span>
-        <% } %>
       </div>
 
     </script>
+
+
+    <div class="no-display" id="placeDetails">
+
+      <script id="detailsPlaceTemplate" type="text/template">
+
+        <h2 class="placeTitle">
+          <a href="<%= website %>" target="_blank"><%= name %></a>
+          <span><%= phone %></span>
+        </h2>
+
+
+
+        <h2 class="title">Work Schedule </h2>
+
+        <% if (workSchedule.length > 0) { %>
+          <ul class="schedule">
+            <% _.each(workSchedule, function(list) { %>
+              <li><%= list %></li>
+            <% }) %>
+          </ul>
+        <% } else { %>
+          <p class="no-info">No Schedule...</p>
+        <% } %>
+
+        <h2 class="title">Feedback </h2>
+
+        <% if (typeof(reviews) !== "undefined") { %>
+          <ul class="comments">
+            <% _.each(reviews, function(review) { %>
+              <li>
+                <h3><%= review.author_name %></h3>
+                <p><%= review.text %></p>
+              </li>
+            <% }) %>
+          </ul>
+        <% } else { %>
+          <p class="no-info">No Feedback yet...</p>
+        <% } %>
+      </script>
+
+    </div>
+
 
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOL3GHfdjdKVJ4V3rNOPuH0x-yV3x8spY&libraries=geometry,places"></script>
     <script src="build/js/build.js"></script>

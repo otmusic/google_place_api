@@ -20,6 +20,7 @@ $(function () {
                 zoom: 15
             });
 
+
             self.getPlacesFromGoogleMapAPI(userCoordinateObject, map, searchPlace)
 
         },
@@ -47,18 +48,21 @@ $(function () {
                 if (status === 'OK') {
                     $.each(results, function(index, value) {
                         //noinspection JSUnresolvedVariable,JSUnresolvedFunction
+
+
                         var place = new app.Place({
                             name: value.name,
                             latitude: value.geometry.location.lat(),
                             longitude: value.geometry.location.lng(),
                             icon: value.icon,
-                            place_id: value.place_id,
-                            vicinity: value.vicinity,
+                            placeId: value.place_id,
+                            address: value.formatted_address,
                             photos: value.photos,
                             rating: value.rating,
                             opening: value.opening_hours,
                             geometry: value.geometry,
-                            types: value.types
+                            types: value.types,
+                            mapService: service
                         });
 
                         self.createMarker(value, map, place);
@@ -66,6 +70,7 @@ $(function () {
                         places.push(place);
 
                     });
+
 
                     placesCollection = new app.PlaceCollections(places);
 

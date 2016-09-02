@@ -28,12 +28,44 @@ $(function(){
         },
 
         showMorePlaceInfo: function() {
-            var self;
+            var self, placeModel;
             self = this;
+            placeModel = self.model.toJSON();
 
-            self.$el.find('.more-info').toggle(function () {
-                self.toggleAnimationMarker();
+
+            // noinspection JSUnresolvedVariable,JSUnresolvedFunction
+            placeModel.mapService.getDetails({
+                placeId: placeModel.placeId
+            }, function(response, status) {
+                //noinspection JSUnresolvedVariable,JSUnresolvedFunction
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+
+                    //noinspection JSUnresolvedVariable,JSUnresolvedFunction
+                    self.model.set({
+                        website: response.website,
+                        phone: response.formatted_phone_number,
+                        reviews: response.reviews,
+                        workSchedule: (typeof(response.opening_hours) == 'undefined') ? [] : response.opening_hours.weekday_text
+                    });
+
+                    var detailsPlace = new app.DetailsPlaceView({ model: self.model });
+                    $.fancybox(detailsPlace.render().el, {
+                        'width':400,
+                        'hideOnOverlayClick' : true,
+                        'autoDimensions' : true,
+                        beforeShow: function () {
+                            self.toggleAnimationMarker();
+                        },
+                        afterClose: function () {
+                            self.toggleAnimationMarker();
+                        }
+                    });
+
+
+                }
+
             });
+
 
         },
 
@@ -51,10 +83,6 @@ $(function(){
                 place.mapMarker.setAnimation(google.maps.Animation.BOUNCE);
             }
 
-        },
-
-        findPlace: function () {
-            console.log('click button');
         }
 
     });

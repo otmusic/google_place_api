@@ -7,8 +7,8 @@ $(function () {
 
     app.Place = Backbone.Model.extend({
 
-        initialize: function () {
-
+        defaults: {
+            rating: '0.0'
         }
 
 
