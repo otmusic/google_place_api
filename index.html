@@ -9,6 +9,7 @@
   <body>
 
     <div class="container">
+
       <div class="find-place-container" id="findPlaceWithGoogleApi">
         <form action="#" data-remote="true" id="findPlaceForm">
           <fieldset>
@@ -18,7 +19,12 @@
         </form>
       </div>
       <div id="map" class="google-map"></div>
-      <div id="places-lists" class="places-container"></div>
+      <div id="places-lists" class="places-container">
+        <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+        </div>
+      </div>
     </div>
 
 
@@ -80,7 +86,6 @@
           <a href="<%= website %>" target="_blank"><%= name %></a>
           <span><%= phone %></span>
         </h2>
-
 
 
         <h2 class="title">Work Schedule </h2>

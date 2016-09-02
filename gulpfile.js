@@ -52,8 +52,10 @@ gulp.task('build-js-prod', function () {
 
 gulp.task('build-css', function () {
     return gulp.src([
-        'scss/main.scss',
-        'node_modules/fancybox/dist/css/jquery.fancybox.css'
+        'node_modules/fancybox/dist/css/jquery.fancybox.css',
+        'node_modules/spinkit/css/spinkit.css',
+        'scss/main.scss'
+
     ])
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(concatCss("main.css"))

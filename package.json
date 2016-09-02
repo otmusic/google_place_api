@@ -30,6 +30,7 @@
     "gulp-minify": "0.0.12",
     "gulp-sass": "2.3.2",
     "gulp-concat-css":"2.3.0",
+    "spinkit":"1.2.5",
     "buble": "^0.12.3",
     "jquery": "^3.0.0",
     "fancybox": "^3.0.0",

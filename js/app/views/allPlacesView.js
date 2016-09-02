@@ -14,6 +14,8 @@ $(function(){
 
         initialize: function () {
 
+            $('.spinner').remove();
+
             $('#places-lists').html(this.render().el);
 
         },
